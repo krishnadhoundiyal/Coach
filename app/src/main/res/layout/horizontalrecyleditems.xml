@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+   <include layout="@layout/description"
+       android:id="@+id/horizontal_scroll_desc"
+       />
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/recyle_test"
+       android:layout_below="@id/horizontal_scroll_desc"
+       >
+   </android.support.v7.widget.RecyclerView>
+
+
+
+</RelativeLayout>

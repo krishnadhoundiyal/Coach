@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_marginTop="2dp"
+    app:cardBackgroundColor="@color/white"
+
+    >
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="left"
+        >
+
+        <ImageView
+            android:id="@+id/imagegrid"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/test1" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
