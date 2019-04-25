@@ -20,6 +20,8 @@ public class AdvertFragment extends Fragment {
     private List<BaseDataModel> itemsToDisplay;
     private OnFragmentInteractionListener mlistener;
     private final int HorizontalScrollImages[] = {R.drawable.electromagnetics,R.drawable.thermodynamics,R.drawable.solidmechanics,R.drawable.shm,R.drawable.optics,R.drawable.fluidmechanics};
+    private final int HorizontalScrollPhysics[] = {R.drawable.calculus,R.drawable.trigonometry,R.drawable.probablity,R.drawable.conics,R.drawable.algebra};
+    private final int HorizontalScrollPrimaryMaths[] = {R.drawable.fractions, R.drawable.measurement};
     private final int staggeredList[] = {R.drawable.medals,R.drawable.calculus,R.drawable.calculus,R.drawable.calculus};
     public AdvertFragment() {
         itemsToDisplay = new ArrayList<>();
@@ -33,19 +35,43 @@ public class AdvertFragment extends Fragment {
         ScrollDataList HorizontalScroll;
         List<BaseDataModel> innerList = new ArrayList<>();
         for(int x = 1; x < 10; x++) {
-            ScrollDataModel sm = new ScrollDataModel("Physics"+Integer.toString(x),R.drawable.cheese_3);
+            ScrollDataModel sm = new ScrollDataModel("Physics"+Integer.toString(x),R.drawable.cheese_3,1);
             innerList.add(sm);
         }
-        HorizontalScroll = new ScrollDataList(innerList,"Senior Physics");
+        HorizontalScroll = new ScrollDataList(innerList,"Senior Physics",1);
         //itemsToDisplay.add(HorizontalScroll);
         ScrollDataList HorizontalScroll1;
         List<BaseDataModel> innerList1 = new ArrayList<>();
         for(int x = 0; x < 6; x++) {
-            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollImages[x]);
+            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollImages[x],1);
             innerList1.add(sm);
         }
-        HorizontalScroll1 = new ScrollDataList(innerList1,"Senior Physics");
+        HorizontalScroll1 = new ScrollDataList(innerList1,"Senior Physics",1);
         itemsToDisplay.add(HorizontalScroll1);
+
+        //ANother horizontal scroll
+        ScrollDataList HorizontalScroll2;
+        List<BaseDataModel> innerList2 = new ArrayList<>();
+        for(int x = 0; x < HorizontalScrollPhysics.length; x++) {
+            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollPhysics[x],1);
+            innerList2.add(sm);
+        }
+        HorizontalScroll2 = new ScrollDataList(innerList2,"Senior Mathematics",1);
+        itemsToDisplay.add(HorizontalScroll2);
+
+        //Horizontal scroll for primary maths
+        ScrollDataList HorizontalScroll3;
+        List<BaseDataModel> innerList3 = new ArrayList<>();
+        for(int x = 0; x < HorizontalScrollPrimaryMaths.length; x++) {
+            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollPrimaryMaths[x],2);
+            innerList3.add(sm);
+        }
+        for(int x = 0; x < HorizontalScrollPrimaryMaths.length; x++) {
+            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollPrimaryMaths[x],2);
+            innerList3.add(sm);
+        }
+        HorizontalScroll3 = new ScrollDataList(innerList3,"Elementary Mathematics",2);
+        itemsToDisplay.add(HorizontalScroll3);
         //AdvertDataModel adv1 = new AdvertDataModel(R.drawable.cheese_5,"Chemistry"+Integer.toString(1));
         //itemsToDisplay.add(adv);
         for (int x = 0; x < 10 ; x++) {

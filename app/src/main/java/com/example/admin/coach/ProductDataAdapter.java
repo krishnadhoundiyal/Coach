@@ -1,16 +1,22 @@
 package com.example.admin.coach;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,10 +51,12 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             case 2 :
                 inflateView = mInflator.inflate(R.layout.horizontalscrolls,parent,false);
                 Log.d("View objecRR",inflateView.toString());
+
                 return new ScrollViewHolder(inflateView);
             case 3 :
                 inflateView =mInflator.inflate(R.layout.horizontalrecyleditems,parent,false);
                 Log.d("View object",inflateView.toString());
+
                 return new ScrollListHolder(inflateView);
             case 4 :
                 inflateView = mInflator.inflate(R.layout.cards,parent,false);
@@ -161,6 +169,14 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             //create an adatper here for the horizontal scrolls her
 
             rView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false));
+            SnapHelper helper;
+            if (Object.getItemsPerScreenWidth() > 1) {
+                helper = new LinearSnapHelper();
+            } else {
+                helper = new PagerSnapHelper();
+            }
+            rView.setOnFlingListener(null);
+            helper.attachToRecyclerView(rView);
             ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context);
             rView.setAdapter(adapter);
             //set the header text here
@@ -174,6 +190,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public ScrollViewHolder(View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.scollimgID);
+
             //text = (TextView) itemView.findViewById(R.id.scrolltext);
         }
 
@@ -181,6 +198,10 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void bind(ScrollDataModel Object) {
             //text.setText(Object.getText());
             img.setImageResource(Object.getImage());
+           DisplayMetrics displayMetrics = new DisplayMetrics();
+            int width = Resources.getSystem().getDisplayMetrics().widthPixels/Object.getItems();
+            //Assuming 4dp margins to each side
+            img.getLayoutParams().width = width- 4;
         }
     }
     public  class CardViewHolder extends BaseViewHolder<CardDataModel> {

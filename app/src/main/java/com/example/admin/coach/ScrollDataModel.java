@@ -3,12 +3,18 @@ package com.example.admin.coach;
 public class ScrollDataModel implements BaseDataModel {
     private String text;
     private int image;
-    ScrollDataModel(String text,int image) {
+    private int items;
+    ScrollDataModel(String text,int image,int items) {
         this.text = text;
         this.image = image;
+        this.items = items;
     }
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getItems() {
+        return this.items;
     }
 
     public String getText() {
