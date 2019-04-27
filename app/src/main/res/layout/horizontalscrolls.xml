@@ -23,7 +23,7 @@
 
 
         android:scaleType="fitXY"
-        android:src="@drawable/shm" />
+        android:src="@drawable/measurement" />
 
 
 

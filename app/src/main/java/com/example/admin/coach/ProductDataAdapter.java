@@ -2,6 +2,7 @@ package com.example.admin.coach;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -177,12 +178,46 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             }
             rView.setOnFlingListener(null);
             helper.attachToRecyclerView(rView);
+            //add decorations to the recylerview, addng margins
+            if (Object.getItemsPerScreenWidth() > 1) {
+                rView.addItemDecoration(new RecylerViewDecoration( 20));
+            } else {
+                rView.addItemDecoration(new RecylerViewDecoration( 10));
+            }
+
             ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context);
             rView.setAdapter(adapter);
             //set the header text here
             descView.setText(Object.getDescription());
         }
-    }
+        public class RecylerViewDecoration extends RecyclerView.ItemDecoration {
+
+            private int margin;
+            RecylerViewDecoration(int mars) {
+
+                margin = mars;
+            }
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                int position = parent.getChildAdapterPosition(view);
+                final int itemCount = state.getItemCount();
+                //set right margin to all
+                outRect.right = margin;
+                //set bottom margin to all
+               // outRect.bottom = margin;
+                //we only add top margin to the first row
+                /*if (position <columns) {
+                    outRect.top = margin;
+                }
+                //add left margin only to the first column
+                if(position%columns==0){
+                    outRect.left = margin;
+                }*/
+            }
+
+            }
+        }
+
     public  class ScrollViewHolder extends BaseViewHolder<ScrollDataModel> {
         private ImageView img;
         //private TextView text;
@@ -200,8 +235,14 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             img.setImageResource(Object.getImage());
            DisplayMetrics displayMetrics = new DisplayMetrics();
             int width = Resources.getSystem().getDisplayMetrics().widthPixels/Object.getItems();
+
+            if (Object.getItems() > 1) {
+                img.getLayoutParams().height = 250;
+
+            }
             //Assuming 4dp margins to each side
             img.getLayoutParams().width = width- 4;
+
         }
     }
     public  class CardViewHolder extends BaseViewHolder<CardDataModel> {

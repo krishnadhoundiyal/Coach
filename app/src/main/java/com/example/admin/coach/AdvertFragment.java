@@ -21,7 +21,7 @@ public class AdvertFragment extends Fragment {
     private OnFragmentInteractionListener mlistener;
     private final int HorizontalScrollImages[] = {R.drawable.electromagnetics,R.drawable.thermodynamics,R.drawable.solidmechanics,R.drawable.shm,R.drawable.optics,R.drawable.fluidmechanics};
     private final int HorizontalScrollPhysics[] = {R.drawable.calculus,R.drawable.trigonometry,R.drawable.probablity,R.drawable.conics,R.drawable.algebra};
-    private final int HorizontalScrollPrimaryMaths[] = {R.drawable.fractions, R.drawable.measurement};
+    private final int HorizontalScrollPrimaryMaths[] = {R.drawable.numbers,R.drawable.basicalgebra,R.drawable.fractions, R.drawable.measurement,R.drawable.logarithms};
     private final int staggeredList[] = {R.drawable.medals,R.drawable.calculus,R.drawable.calculus,R.drawable.calculus};
     public AdvertFragment() {
         itemsToDisplay = new ArrayList<>();
