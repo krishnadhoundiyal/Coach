@@ -30,6 +30,12 @@ public class ScrollDataModel implements BaseDataModel {
 
     @Override
     public int getViewType() {
-        return 2;
+        switch (items) {
+            case 1:
+                return 2;
+            case 2:
+                return 21;
+        }
+        return 0;
     }
 }

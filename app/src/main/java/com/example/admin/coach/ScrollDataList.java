@@ -7,16 +7,20 @@ public class ScrollDataList implements BaseDataModel {
     private List<? extends  BaseDataModel> ScrollElementList;
     private String Description;
     private int ItemsPerScreenWidth;
-    ScrollDataList(List<? extends BaseDataModel> items, String desc,int itemsPerScreenWidth) {
+    private String pagerType;
+    ScrollDataList(List<? extends BaseDataModel> items, String desc,int itemsPerScreenWidth,String pager) {
         ScrollElementList = items;
         Description = desc;
         ItemsPerScreenWidth = itemsPerScreenWidth;
+        pagerType = pager;
     }
 
     public String getDescription() {
         return Description;
     }
-
+    public String getPagerType() {
+        return pagerType;
+    }
     public int getItemsPerScreenWidth() {
         return ItemsPerScreenWidth;
     }

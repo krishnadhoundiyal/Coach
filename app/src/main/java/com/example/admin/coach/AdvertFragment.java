@@ -22,7 +22,8 @@ public class AdvertFragment extends Fragment {
     private final int HorizontalScrollImages[] = {R.drawable.electromagnetics,R.drawable.thermodynamics,R.drawable.solidmechanics,R.drawable.shm,R.drawable.optics,R.drawable.fluidmechanics};
     private final int HorizontalScrollPhysics[] = {R.drawable.calculus,R.drawable.trigonometry,R.drawable.probablity,R.drawable.conics,R.drawable.algebra};
     private final int HorizontalScrollPrimaryMaths[] = {R.drawable.numbers,R.drawable.basicalgebra,R.drawable.fractions, R.drawable.measurement,R.drawable.logarithms};
-    private final int staggeredList[] = {R.drawable.medals,R.drawable.calculus,R.drawable.calculus,R.drawable.calculus};
+    private final int staggeredList[] = {R.drawable.medals,R.drawable.calculus,R.drawable.conics,R.drawable.probablity};
+    private final int HorizontalScrollCenterFacilities[] = {R.drawable.gd,R.drawable.visits,R.drawable.peek,R.drawable.pick,R.drawable.library,R.drawable.faculty};
     public AdvertFragment() {
         itemsToDisplay = new ArrayList<>();
         //AdvertDataModel adv = new AdvertDataModel(R.drawable.advert,"");
@@ -32,21 +33,14 @@ public class AdvertFragment extends Fragment {
 
 
         //itemsToDisplay.add(stagList1);
-        ScrollDataList HorizontalScroll;
-        List<BaseDataModel> innerList = new ArrayList<>();
-        for(int x = 1; x < 10; x++) {
-            ScrollDataModel sm = new ScrollDataModel("Physics"+Integer.toString(x),R.drawable.cheese_3,1);
-            innerList.add(sm);
-        }
-        HorizontalScroll = new ScrollDataList(innerList,"Senior Physics",1);
-        //itemsToDisplay.add(HorizontalScroll);
+
         ScrollDataList HorizontalScroll1;
         List<BaseDataModel> innerList1 = new ArrayList<>();
         for(int x = 0; x < 6; x++) {
             ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollImages[x],1);
             innerList1.add(sm);
         }
-        HorizontalScroll1 = new ScrollDataList(innerList1,"Senior Physics",1);
+        HorizontalScroll1 = new ScrollDataList(innerList1,"Senior Physics",1,"Linear");
         itemsToDisplay.add(HorizontalScroll1);
 
         //ANother horizontal scroll
@@ -56,7 +50,7 @@ public class AdvertFragment extends Fragment {
             ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollPhysics[x],1);
             innerList2.add(sm);
         }
-        HorizontalScroll2 = new ScrollDataList(innerList2,"Senior Mathematics",1);
+        HorizontalScroll2 = new ScrollDataList(innerList2,"Senior Mathematics",1,"Linear");
         itemsToDisplay.add(HorizontalScroll2);
 
         //Horizontal scroll for primary maths
@@ -70,13 +64,14 @@ public class AdvertFragment extends Fragment {
             ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollPrimaryMaths[x],2);
             innerList3.add(sm);
         }
-        HorizontalScroll3 = new ScrollDataList(innerList3,"Elementary Mathematics",2);
+        HorizontalScroll3 = new ScrollDataList(innerList3,"Elementary Mathematics",2,"Center");
         itemsToDisplay.add(HorizontalScroll3);
+
         //AdvertDataModel adv1 = new AdvertDataModel(R.drawable.cheese_5,"Chemistry"+Integer.toString(1));
         //itemsToDisplay.add(adv);
         for (int x = 0; x < 10 ; x++) {
             CardDataModel cardX = new CardDataModel("Earth","Distance from Sun is 150Nm km","Weight of the Earth is 24.5","Acceleration is 9.8",R.drawable.cheese_3);
-            //itemsToDisplay.add(cardX);
+           // itemsToDisplay.add(cardX);
         }
 
         List<BaseDataModel> GridList = new ArrayList<>();
@@ -95,17 +90,28 @@ public class AdvertFragment extends Fragment {
         }
         CardGridList stagList = new CardGridList(GridList,"Offerings");
         itemsToDisplay.add(stagList);
+        // Horzontal Scroll for Facility Facilities
+        //Horizontal scroll for primary maths
+        ScrollDataList HorizontalScroll4;
+        List<BaseDataModel> innerList4 = new ArrayList<>();
+        for(int x = 0; x < HorizontalScrollCenterFacilities.length; x++) {
+            ScrollDataModel sm = new ScrollDataModel("",HorizontalScrollCenterFacilities[x],2);
+            innerList4.add(sm);
+        }
+
+        HorizontalScroll4 = new ScrollDataList(innerList4,"Center Facilities",2,"Linear");
+        itemsToDisplay.add(HorizontalScroll4);
         AdvertDataModel adv = new AdvertDataModel(R.drawable.brochure,"","About Us");
-        itemsToDisplay.add(adv);
+        //itemsToDisplay.add(adv);
         List<BaseDataModel> GridList1 = new ArrayList<>();
         for(int x = 0; x < 4; x++) {
             int imgx;
             if (x % 2 == 1) {
-                imgx = R.drawable.calculus;
+                imgx = R.drawable.measurement;
             } else {
-                imgx = R.drawable.algebra;
+                imgx = R.drawable.numbers;
             }
-            CardsGridModel sm = new CardsGridModel("Text grid model",imgx,x,"unstaggered");
+            CardsGridModel sm = new CardsGridModel("MultiRow",imgx,x,"unstaggered");
             GridList1.add(sm);
 
         }
@@ -121,7 +127,7 @@ public class AdvertFragment extends Fragment {
             } else {
                 imgx = R.drawable.test2;
             }
-            CardsGridModel sm = new CardsGridModel("Text grid model",imgx,x,"unstaggered");
+            CardsGridModel sm = new CardsGridModel("SingleRow",imgx,x,"unstaggered");
             GridList2.add(sm);
 
         }
