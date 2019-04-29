@@ -17,7 +17,7 @@ public class CardCourse {
     }
 
     public int getImageIcon() {
-        return R.drawable.cheese_1;
+        return R.drawable.algebra;
     }
 
     public String getCourseText() {

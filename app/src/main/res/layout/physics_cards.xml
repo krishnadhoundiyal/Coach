@@ -38,7 +38,7 @@
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
                 android:scaleType="fitXY"
-                android:src="@drawable/cheese_2"
+
                 app:layout_constraintBottom_toTopOf="@id/textView"
                 app:layout_constraintDimensionRatio="2:3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +135,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/cheese_2"
+
                 app:layout_constraintBottom_toTopOf="@id/textView22"
                 app:layout_constraintDimensionRatio="2:3"
                 app:layout_constraintEnd_toEndOf="parent"

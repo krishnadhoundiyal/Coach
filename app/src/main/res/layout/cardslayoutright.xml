@@ -39,7 +39,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.7"
-                app:srcCompat="@drawable/cheese_2" />
+                />
 
             <TextView
                 android:id="@+id/textView31"

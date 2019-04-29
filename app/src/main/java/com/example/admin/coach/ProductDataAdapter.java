@@ -2,6 +2,8 @@ package com.example.admin.coach;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.zip.Inflater;
@@ -32,11 +35,14 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private List<? extends BaseDataModel> dataSet;
     private LayoutInflater mInflator;
     private Context context;
-    ProductDataAdapter(List<? extends BaseDataModel> item, Context context) {
+    private HashMap<Integer,Bitmap> ImageLookHolder;
+    ProductDataAdapter(List<? extends BaseDataModel> item, Context context,HashMap<Integer,Bitmap> lookup) {
         dataSet = item;
         mInflator = LayoutInflater.from(context);
         context = context;
+        ImageLookHolder = lookup;
     }
+
     @NonNull
     @Override
     public BaseViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
@@ -64,6 +70,11 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 height = Resources.getSystem().getDisplayMetrics().heightPixels;
                 inflateView.getLayoutParams().width = width - 4;
                 inflateView.getLayoutParams().height =200;
+                //imag processing
+                //int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+                //Bitmap bMap = BitmapFactory.decodeResource(inflateView.getResources(),Object.getImage());
+
+
                 return new ScrollViewHolder(inflateView);
             case 3 :
                 inflateView =mInflator.inflate(R.layout.horizontalrecyleditems,parent,false);
@@ -193,7 +204,14 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             text.setText(Object.getText());
             //img.setImageResource(Object.getImage());
            // img.setImageResource(getResources().getDrawable(R.drawable.cheese_1));
-           img.setImageResource(Object.getImage());
+           //img.setImageResource(Object.getImage());
+            /*int screenWidth = DeviceDimensionsHelper.getDisplayWidth(img.getContext());
+            // Load a bitmap from the drawable folder
+            Bitmap bMap = BitmapFactory.decodeResource(img.getContext().getResources(),Object.getImage());
+
+            // Resize the bitmap to 150x100 (width x height)
+            Bitmap bMapScaled = BitmapScaler.scaleToFitWidth(bMap, screenWidth);*/
+            img.setImageBitmap(ImageLookHolder.get(Object.getImage()));
            descView.setText(Object.getDescription());
         }
     }
@@ -239,7 +257,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 rView.addItemDecoration(new RecylerViewDecoration( 10));
             }
 
-            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context);
+            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder);
             rView.setAdapter(adapter);
             //set the header text here
             descView.setText(Object.getDescription());
@@ -256,7 +274,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 int position = parent.getChildAdapterPosition(view);
                 final int itemCount = state.getItemCount();
                 //set right margin to all
-                outRect.right = margin;
+                //outRect.right = margin;
                 //outRect.left = 5;
                 if (position% itemCount==0) {
                     //outRect.left = 5;
@@ -292,7 +310,11 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @Override
         public void bind(ScrollDataModel Object) {
             //text.setText(Object.getText());
-            img.setImageResource(Object.getImage());
+
+            // Load a bitmap from the drawable folder
+
+            img.setImageBitmap(ImageLookHolder.get(Object.getImage()));
+            //img.setImageResource(Object.getImage());
 
            //DisplayMetrics displayMetrics = new DisplayMetrics();
             //int width = Resources.getSystem().getDisplayMetrics().widthPixels/Object.getItems();
@@ -351,7 +373,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void bind(CardGridList Object) {
 
             rView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context);
+            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder);
             rView.setHasFixedSize(true);
             rView.setAdapter(adapter);
             descView.setText(Object.getDescription());
@@ -372,7 +394,15 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @Override
         public void bind(CardsGridModel Object) {
             //text.setText(Object.getText());
-            img.setImageResource(Object.getImage());
+            //img.setImageResource(Object.getImage());
+           /* int screenWidth = DeviceDimensionsHelper.getDisplayWidth(img.getContext());
+            // Load a bitmap from the drawable folder
+            Bitmap bMap = BitmapFactory.decodeResource(img.getContext().getResources(),Object.getImage());
+
+            // Resize the bitmap to 150x100 (width x height)
+            Bitmap bMapScaled = BitmapScaler.scaleToFitWidth(bMap, screenWidth);*/
+            img.setImageBitmap(ImageLookHolder.get(Object.getImage()));
+            //img.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
     }
 }

@@ -34,7 +34,7 @@ public class SubjectList extends Fragment {
         // Required empty public constructor
         itemsToDisplay = new ArrayList<CardCourse>();
         for (int i = 0;  i < 20; i++){
-            CardCourse subject = new CardCourse(R.drawable.cheese_1,2,"Physics");
+            CardCourse subject = new CardCourse(R.drawable.algebra,2,"Physics");
             itemsToDisplay.add(subject);
             Log.d("Counter",Integer.toString(i));
         }

@@ -132,7 +132,7 @@ public class CoursesDetails extends Fragment {
     }
     private void createCourseCards(ArrayList<CardCourse> courseCards) {
         for (int i=0; i <20;i++) {
-            CardCourse objx = new CardCourse(R.drawable.cheese_1,4,"Physics");
+            CardCourse objx = new CardCourse(R.drawable.algebra,4,"Physics");
             courseCards.add(objx);
         }
     }
