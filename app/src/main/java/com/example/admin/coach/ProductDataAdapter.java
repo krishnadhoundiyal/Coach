@@ -36,11 +36,15 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private LayoutInflater mInflator;
     private Context context;
     private HashMap<Integer,Bitmap> ImageLookHolder;
-    ProductDataAdapter(List<? extends BaseDataModel> item, Context context,HashMap<Integer,Bitmap> lookup) {
+    private int SystemWidth = -1;
+    private int SystemHeight = -1;
+    ProductDataAdapter(List<? extends BaseDataModel> item, Context context,HashMap<Integer,Bitmap> lookup, int sWidth,int sHeight) {
         dataSet = item;
         mInflator = LayoutInflater.from(context);
         context = context;
         ImageLookHolder = lookup;
+        SystemWidth = sWidth;
+        SystemHeight = sHeight;
     }
 
     @NonNull
@@ -57,17 +61,15 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             case 2 :
                 inflateView = mInflator.inflate(R.layout.horizontalscrolls,parent,false);
-                int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-                int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-                inflateView.getLayoutParams().width = width -4;
+                inflateView.getLayoutParams().width = SystemWidth -4;
                 inflateView.getLayoutParams().height = 400;
-                Log.d("View objecRR",inflateView.toString());
+
                 return new ScrollViewHolder(inflateView);
             case 21 :
                 inflateView = mInflator.inflate(R.layout.horizontalscrolls,parent,false);
-                Log.d("View objecRR",inflateView.toString());
-                width = Resources.getSystem().getDisplayMetrics().widthPixels/2;
-                height = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+                int width = SystemWidth/2;
+                int height = SystemHeight;
                 inflateView.getLayoutParams().width = width - 4;
                 inflateView.getLayoutParams().height =200;
                 //imag processing
@@ -89,8 +91,22 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 return new CardGridHolder(inflateView);
             case 60 :
                 inflateView = mInflator.inflate(R.layout.cardsgrid,parent,false);
+
+                StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) inflateView.getLayoutParams();
+                layoutParams.height = 400;
+                layoutParams.width = SystemWidth/2;
+                layoutParams.setFullSpan(false);
+                inflateView.setLayoutParams(layoutParams);
                 //staggered layout changes here
-                inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+               /* ViewGroup.LayoutParams lp = inflateView.getLayoutParams();
+                    StaggeredGridLayoutManager.LayoutParams sglp = (StaggeredGridLayoutManager.LayoutParams) lp;
+                    sglp.setFullSpan(false);
+                    sglp.height = 400;
+                    sglp.width = inflateView.getWidth();
+                    inflateView.setLayoutParams(sglp);*/
+                    //StaggeredGridLayoutManager lm = (StaggeredGridLayoutManager)((RecyclerView) parent).getLayoutManager();
+                   // lm.invalidateSpanAssignments();
+               /* inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
                         ViewGroup.LayoutParams lp = inflateView.getLayoutParams();
@@ -98,7 +114,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                             StaggeredGridLayoutManager.LayoutParams sglp = (StaggeredGridLayoutManager.LayoutParams) lp;
                             sglp.setFullSpan(false);
                             sglp.height = 400;
-                            sglp.width = inflateView.getWidth();
+                            sglp.width =  Resources.getSystem().getDisplayMetrics().widthPixels/2;
                             inflateView.setLayoutParams(sglp);
                             StaggeredGridLayoutManager lm = (StaggeredGridLayoutManager)((RecyclerView) parent).getLayoutManager();
                             lm.invalidateSpanAssignments();
@@ -106,11 +122,19 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         }
                         return true;
                     }
-                });
+                });*/
                 return new CardGridItemHolder(inflateView);
             case 61 :
                 inflateView = mInflator.inflate(R.layout.cardsgrid,parent,false);
-                inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                StaggeredGridLayoutManager.LayoutParams layoutParams1 = (StaggeredGridLayoutManager.LayoutParams) inflateView.getLayoutParams();
+
+                layoutParams1.height = 200;
+                layoutParams1.width = SystemWidth/2;
+                layoutParams1.setFullSpan(false);
+                inflateView.setLayoutParams(layoutParams1);
+               // StaggeredGridLayoutManager lm1 = (StaggeredGridLayoutManager)((RecyclerView) parent).getLayoutManager();
+                //lm1.invalidateSpanAssignments();
+               /* inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
                         ViewGroup.LayoutParams lp = inflateView.getLayoutParams();
@@ -126,11 +150,18 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         }
                         return true;
                     }
-                });
+                });*/
                 return new CardGridItemHolder(inflateView);
             case 7 :
                 inflateView = mInflator.inflate(R.layout.cardsgrid,parent,false);
-                inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                StaggeredGridLayoutManager.LayoutParams layoutParams2 = (StaggeredGridLayoutManager.LayoutParams) inflateView.getLayoutParams();
+                layoutParams2.height = 200;
+                layoutParams2.width = Resources.getSystem().getDisplayMetrics().widthPixels/2;
+                layoutParams2.setFullSpan(false);
+                inflateView.setLayoutParams(layoutParams2);
+                //StaggeredGridLayoutManager lm2 = (StaggeredGridLayoutManager)((RecyclerView) parent).getLayoutManager();
+                //lm2.invalidateSpanAssignments();
+                /*inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
                         ViewGroup.LayoutParams lp = inflateView.getLayoutParams();
@@ -146,11 +177,19 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         }
                         return true;
                     }
-                });
+                });*/
                 return new CardGridItemHolder(inflateView);
             case 71 :
                 inflateView = mInflator.inflate(R.layout.cardsgrid,parent,false);
-                inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                ViewGroup.LayoutParams lp3 = inflateView.getLayoutParams();
+                StaggeredGridLayoutManager.LayoutParams sglp3 = (StaggeredGridLayoutManager.LayoutParams) lp3;
+                sglp3.setFullSpan(false);
+                sglp3.height = 400;
+                //sglp.width = inflateView.getWidth()/2;
+                inflateView.setLayoutParams(sglp3);
+                //StaggeredGridLayoutManager lm3 = (StaggeredGridLayoutManager)((RecyclerView) parent).getLayoutManager();
+                //lm3.invalidateSpanAssignments();
+               /* inflateView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
                         ViewGroup.LayoutParams lp = inflateView.getLayoutParams();
@@ -166,7 +205,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                         }
                         return true;
                     }
-                });
+                });*/
                 return new CardGridItemHolder(inflateView);
         }
     return null;
@@ -257,7 +296,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 rView.addItemDecoration(new RecylerViewDecoration( 10));
             }
 
-            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder);
+            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder,SystemWidth,SystemHeight);
             rView.setAdapter(adapter);
             //set the header text here
             descView.setText(Object.getDescription());
@@ -373,7 +412,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void bind(CardGridList Object) {
 
             rView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder);
+            ProductDataAdapter adapter = new ProductDataAdapter(Object.getAllElements(),context,ImageLookHolder,SystemWidth,SystemHeight);
             rView.setHasFixedSize(true);
             rView.setAdapter(adapter);
             descView.setText(Object.getDescription());

@@ -39,11 +39,12 @@ public class CardsGridModel implements BaseDataModel {
             }
         } else {
             if (text.equals("MultiRow")) {
-                return 7;
+                return 61;
             } else if (text.equals("SingleRow")) {
-                return 71;
+                return 60;
             }
         }
+
         return 0;
     }
 }

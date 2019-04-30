@@ -31,6 +31,8 @@ public class AdvertFragment extends Fragment {
     //private final int staggeredList[] = {R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers};
     private final int HorizontalScrollCenterFacilities[] = {R.drawable.gd,R.drawable.visits,R.drawable.peek,R.drawable.pick,R.drawable.library,R.drawable.faculty};
     private final int unstaggeredList[] = {R.drawable.test1,R.drawable.test2,R.drawable.advert2};
+    private final int MathsGridTopics[] = {R.drawable.conics,R.drawable.probablity,R.drawable.calculus,R.drawable.algebra};
+    private final int PhysicsGridTopics[] = {R.drawable.electromagnetics,R.drawable.solidmechanics,R.drawable.fluidmechanics,R.drawable.calculus};
     //private final int HorizontalScrollCenterFacilities[] = {R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers};
     public AdvertFragment() {
         itemsToDisplay = new ArrayList<>();
@@ -183,14 +185,8 @@ public class AdvertFragment extends Fragment {
         AdvertDataModel adv = new AdvertDataModel(R.drawable.brochure,"","About Us");
         //itemsToDisplay.add(adv);
         List<BaseDataModel> GridList1 = new ArrayList<>();
-        for(int x = 0; x < 4; x++) {
-            int imgx;
-            if (x % 2 == 1) {
-                imgx = R.drawable.calculus;
-            } else {
-                imgx = R.drawable.conics;
-            }
-            CardsGridModel sm = new CardsGridModel("MultiRow",imgx,x,"unstaggered");
+        for(int x = 0; x < MathsGridTopics.length; x++) {
+            CardsGridModel sm = new CardsGridModel("MultiRow",MathsGridTopics[x],x,"unstaggered");
             GridList1.add(sm);
 
         }
@@ -227,6 +223,14 @@ public class AdvertFragment extends Fragment {
         }
         HorizontalScroll5 = new ScrollDataList(innerList5,"Elementary Mathematics",2,"Center");
         itemsToDisplay.add(HorizontalScroll5);
+        List<BaseDataModel> GridList11 = new ArrayList<>();
+        for(int x = 0; x < PhysicsGridTopics.length; x++) {
+            CardsGridModel sm = new CardsGridModel("MultiRow",PhysicsGridTopics[x],x,"unstaggered");
+            GridList11.add(sm);
+
+        }
+        CardGridList stagList11 = new CardGridList(GridList11,"Physics Topics");
+        itemsToDisplay.add(stagList11);
         //Horizontal scroll for primary maths
         ScrollDataList HorizontalScroll6;
         List<BaseDataModel> innerList6 = new ArrayList<>();
@@ -307,17 +311,19 @@ public class AdvertFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mainfragment,container,false);
         //
-
+        int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int height = Resources.getSystem().getDisplayMetrics().heightPixels;
         HashMap<Integer,Bitmap> imageLookup = new HashMap<>();
-        setImageLookUpMap(view,HorizontalScrollPrimaryMaths,imageLookup);
-        setImageLookUpMap(view,HorizontalScrollCenterFacilities,imageLookup);
-        setImageLookUpMap(view,HorizontalScrollPhysics,imageLookup);
-        setImageLookUpMap(view,HorizontalScrollImages,imageLookup);
-        setImageLookUpMap(view,unstaggeredList,imageLookup);
-        setImageLookUpMap(view,staggeredList,imageLookup);
+        setImageLookUpMap(view,HorizontalScrollPrimaryMaths,imageLookup,width);
+        setImageLookUpMap(view,HorizontalScrollCenterFacilities,imageLookup,width);
+        setImageLookUpMap(view,HorizontalScrollPhysics,imageLookup,width);
+        setImageLookUpMap(view,HorizontalScrollImages,imageLookup,width);
+        setImageLookUpMap(view,unstaggeredList,imageLookup,width);
+        setImageLookUpMap(view,staggeredList,imageLookup,width);
         RecyclerView recyclerView = view.findViewById(R.id.mainRecyler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        ProductDataAdapter adapter = new ProductDataAdapter(itemsToDisplay,this.getContext(),imageLookup);
+
+        ProductDataAdapter adapter = new ProductDataAdapter(itemsToDisplay,this.getContext(),imageLookup,width,height);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -325,8 +331,7 @@ public class AdvertFragment extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-    public void setImageLookUpMap(View v,int[] imgId,HashMap<Integer,Bitmap> lookup) {
-        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    public void setImageLookUpMap(View v,int[] imgId,HashMap<Integer,Bitmap> lookup, int screenWidth) {
         for (int x = 0; x < imgId.length; x++)  {
             Bitmap bMap = BitmapFactory.decodeResource(v.getResources(),imgId[x]);
             Bitmap bMapScaled = BitmapScaler.scaleToFitWidth(bMap, screenWidth);
