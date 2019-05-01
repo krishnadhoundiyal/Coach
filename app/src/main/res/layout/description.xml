@@ -3,11 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
     android:layout_marginBottom="5dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="hello there"
         android:textSize="20dp"
         android:textColor="@color/black"
         android:layout_marginLeft="10dp"

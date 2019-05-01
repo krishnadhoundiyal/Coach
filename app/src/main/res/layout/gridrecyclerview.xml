@@ -2,18 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <include layout="@layout/description"
+    android:background="@drawable/background_border"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingRight="5dp"
+
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp">
+
+    <include
         android:id="@+id/staggered_grid_id"
+        layout="@layout/description"
+
         />
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleGrids"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycleGrids"
-        android:layout_below="@id/staggered_grid_id"
-        >
-    </android.support.v7.widget.RecyclerView>
+        android:layout_below="@id/staggered_grid_id"></android.support.v7.widget.RecyclerView>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/recycleGrids"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#97ed9e"
+        android:text="View All" />
 
 </RelativeLayout>

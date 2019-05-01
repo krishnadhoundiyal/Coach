@@ -62,7 +62,7 @@ public class ProductDataAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             case 2 :
                 inflateView = mInflator.inflate(R.layout.horizontalscrolls,parent,false);
                 inflateView.getLayoutParams().width = SystemWidth -4;
-                inflateView.getLayoutParams().height = 400;
+                inflateView.getLayoutParams().height = 300;
 
                 return new ScrollViewHolder(inflateView);
             case 21 :
