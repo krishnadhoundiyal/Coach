@@ -37,6 +37,11 @@ public class AdvertFragment extends Fragment {
     private final int PhysicsJuniorTopics[] = {R.drawable.newtonmotion,R.drawable.heatjunior,R.drawable.workenergy,R.drawable.waves};
     private final int UpComingEvents[] = {R.drawable.test1,R.drawable.test2};
     private final int olympiads[] = {R.drawable.icho,R.drawable.ipho,R.drawable.imo};
+    private final int primary[] = {R.drawable.science,R.drawable.primarymaths,R.drawable.english,R.drawable.languages};
+    private final int foundation[] = {R.drawable.foundationmathemtics,R.drawable.foundscience,R.drawable.foundationmaths,R.drawable.foundationsciencehigher};
+    private final int schoolcomputers[] = {R.drawable.pythonschool1,R.drawable.schooljava,R.drawable.schoolc};
+    private final int softwareengg[] = {R.drawable.angularengg,R.drawable.pythonengg,R.drawable.enggunix,R.drawable.enggphp,R.drawable.mongoengg,R.drawable.schoolandroid,R.drawable.meanengg,R.drawable.nodeengg,R.drawable.postgresengg,R.drawable.enggperl};
+    private final int enggEntrance[] = {R.drawable.engg1,R.drawable.engg2,R.drawable.engg3,R.drawable.engg4};
     //private final int HorizontalScrollCenterFacilities[] = {R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers};
     public void updateItemsToDisplayList(int[] itemList, String type, int itemsPerScreen,String pagerType, String description, String gridType) {
         switch(type){
@@ -113,7 +118,7 @@ public class AdvertFragment extends Fragment {
         HorizontalScroll21 = new ScrollDataList(innerList21,"Senior Mathematics(XI-XII)",2,"Center");
         updateItemsToDisplayList(HorizontalScrollPhysics,"HORIZONTALSCROLLS",2,"Center","Senior Mathematics(XI-XII)","");
         //itemsToDisplay.add(HorizontalScroll21);
-
+        updateItemsToDisplayList(softwareengg,"HORIZONTALSCROLLS",2,"Center","Software Engineering","");
 
         //itemsToDisplay.add(adv);
         List<BaseDataModel> GridList11 = new ArrayList<>();
@@ -210,6 +215,10 @@ public class AdvertFragment extends Fragment {
         HorizontalScroll3 = new ScrollDataList(innerList3,"Elementary Mathematics",2,"Center");
         //itemsToDisplay.add(HorizontalScroll3);
         updateItemsToDisplayList(HorizontalScrollPrimaryMaths,"HORIZONTALSCROLLS",2,"Center","Junior Mathematics(IX-X)","");
+        updateItemsToDisplayList(primary,"UNSTAGGERED",0,"Center","Primary Subjects(IV-V)","MultiRow");
+        updateItemsToDisplayList(schoolcomputers,"STAGGERED",0,"Center","Computer Science - School","Text grid model");
+        updateItemsToDisplayList(enggEntrance,"UNSTAGGERED",0,"Center","Engineering Entrances","MultiRow");
+        updateItemsToDisplayList(foundation,"UNSTAGGERED",0,"Center","Foundation Courses","MultiRow");
 
         //AdvertDataModel adv1 = new AdvertDataModel(R.drawable.cheese_5,"Chemistry"+Integer.toString(1));
         //itemsToDisplay.add(adv);
@@ -391,6 +400,11 @@ public class AdvertFragment extends Fragment {
         setImageLookUpMap(view,PhysicsJuniorTopics,imageLookup,width);
         setImageLookUpMap(view,UpComingEvents,imageLookup,width);
         setImageLookUpMap(view,olympiads,imageLookup,width);
+        setImageLookUpMap(view,primary,imageLookup,width);
+        setImageLookUpMap(view,foundation,imageLookup,width);
+        setImageLookUpMap(view,enggEntrance,imageLookup,width);
+        setImageLookUpMap(view,softwareengg,imageLookup,width);
+        setImageLookUpMap(view,schoolcomputers,imageLookup,width);
         RecyclerView recyclerView = view.findViewById(R.id.mainRecyler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
