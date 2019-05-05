@@ -42,6 +42,7 @@ public class AdvertFragment extends Fragment {
     private final int schoolcomputers[] = {R.drawable.pythonschool1,R.drawable.schooljava,R.drawable.schoolc};
     private final int softwareengg[] = {R.drawable.angularengg,R.drawable.pythonengg,R.drawable.enggunix,R.drawable.enggphp,R.drawable.mongoengg,R.drawable.schoolandroid,R.drawable.meanengg,R.drawable.nodeengg,R.drawable.postgresengg,R.drawable.enggperl};
     private final int enggEntrance[] = {R.drawable.engg1,R.drawable.engg2,R.drawable.engg3,R.drawable.engg4};
+    private final int seniorChem[] = {R.drawable.organic,R.drawable.inorganic,R.drawable.physical,R.drawable.analytical};
     //private final int HorizontalScrollCenterFacilities[] = {R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers,R.drawable.numbers};
     public void updateItemsToDisplayList(int[] itemList, String type, int itemsPerScreen,String pagerType, String description, String gridType) {
         switch(type){
@@ -117,6 +118,7 @@ public class AdvertFragment extends Fragment {
         }
         HorizontalScroll21 = new ScrollDataList(innerList21,"Senior Mathematics(XI-XII)",2,"Center");
         updateItemsToDisplayList(HorizontalScrollPhysics,"HORIZONTALSCROLLS",2,"Center","Senior Mathematics(XI-XII)","");
+        updateItemsToDisplayList(seniorChem,"HORIZONTALSCROLLS",2,"Center","Senior Chemistry(XI-XII)","");
         //itemsToDisplay.add(HorizontalScroll21);
         updateItemsToDisplayList(softwareengg,"HORIZONTALSCROLLS",2,"Center","Software Engineering","");
 
@@ -405,6 +407,7 @@ public class AdvertFragment extends Fragment {
         setImageLookUpMap(view,enggEntrance,imageLookup,width);
         setImageLookUpMap(view,softwareengg,imageLookup,width);
         setImageLookUpMap(view,schoolcomputers,imageLookup,width);
+        setImageLookUpMap(view,seniorChem,imageLookup,width);
         RecyclerView recyclerView = view.findViewById(R.id.mainRecyler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 

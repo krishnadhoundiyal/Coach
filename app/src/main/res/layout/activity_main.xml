@@ -6,47 +6,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbarcontainer"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true" >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+
+
+
+            />
+    </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarcontainer"
+        >
+
+
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
-            android:background="@color/amber"
-            android:layout_height="@dimen/backdrop_overlay_height"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_width="match_parent"
             android:fitsSystemWindows="true" >
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-
-
-                    />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
-
-                app:tabPadding="0dp"
-                app:tabIndicatorHeight="0dp"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="@color/white"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+
+
+                app:layout_scrollFlags="scroll|enterAlways">
+
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    app:tabMode="scrollable"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabPadding="0dp"
+                    app:tabSelectedTextColor="@color/black"
+
+                    app:tabTextColor="@color/versionBlack" />
 
 
 
+            </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:id="@+id/vpPager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_height="match_parent" />
 
     </android.support.design.widget.CoordinatorLayout>
-
+    </RelativeLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
